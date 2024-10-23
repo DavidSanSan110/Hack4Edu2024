@@ -1,0 +1,283 @@
+/* Sidebar and Course List */
+
+.background {
+  background-color: #f5f3ef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.sidebar {
+  height: 100vh;
+  background-color: #e3e1dc;
+  padding: 20px;
+  border-right: 1px solid #c1bdb7;
+}
+.course-selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.course-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.avatar-wrapper {
+  margin-right: 10px;
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #ff8c00;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.teacher-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+.course-list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: auto;
+}
+.list-item-bordered {
+  border: 1px solid #facc61;
+  border-radius: 8px;
+  padding: 10px;
+  transition: background-color 0.3s ease, border-radius 0.3s ease;
+}
+.list-item-bordered:hover {
+  background-color: rgba(255, 156, 0, 0.1); 
+  border-radius: 12px;
+}
+.course-item {
+  padding: 10px;
+  margin: 5px 0;
+  text-align: center;
+  background-color: #f5f3ef;
+  border: 1px solid #c1bdb7;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: #5c5c5c;
+}
+.course-item:hover {
+  background-color: #f0f0f0;
+}
+.course-item.selected {
+  background-color: #fadb9b;
+  border-color: #ff9d00;
+  color: #333333;
+}
+.add-course-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #ff9d00;
+  font-weight: bold;
+}
+.settings-button,
+.logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.settings-button {
+  background-color: white;
+  color: #ff9d00;
+}
+.logout-button {
+  background-color: white;
+  color: #dc3545;
+}
+
+/* Main Content Styles */
+.alumnos-table {
+  border: 1px solid #e8ae27;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  max-height: 408px;
+  width: 100%;
+}
+.table-header {
+  display: flex;
+  background-color: #facc61;
+  font-weight: bold;
+  padding: 10px;
+}
+.header-cell {
+  flex: 1;
+  text-align: center;
+}
+.table-content {
+  overflow-y: auto;
+  max-height: 300px;
+}
+.table-row {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+.row-cell {
+  flex: 1;
+  text-align: center;
+}
+
+/* Buttons and Modal Styles */
+.create-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: auto;
+}
+.create-button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  background-color: #ff9d00;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.create-button:hover {
+  background-color: #e88b00;
+}
+.rounded-card {
+  border-radius: 20px;
+}
+.modal-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+}
+.generate-button {
+  font-family: "Montserrat", sans-serif;
+  background-color: #ff8c00;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+  width: 30%;
+  margin: 20px;
+  height: 60px;
+  align-self: center;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0px;
+}
+.generate-button:hover {
+  background-color: #ff6f00;
+}
+
+.cerrar-button {
+  font-family: "Montserrat", sans-serif;
+  background-color: #ff8c00;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+  width: 45%;
+  height: 60px;
+  align-self: center;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0px;
+}
+
+/* File Upload Styles */
+.file-upload-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.file-upload-label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: #ff9d00;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff4e5;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+.file-upload-label:hover {
+  background-color: #ffe4b5;
+}
+.file-upload-input {
+  display: none;
+}
+.file-name-display {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+}
+
+/* Welcome Section */
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.welcome-message {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  font-size: 40px;
+}
+
+.file-preview {
+  text-align: center;
+}
+.uploaded-image-preview {
+  max-width: 100%;
+  height: auto;
+}
+.file-upload-container {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.file-upload-container.drag-over {
+  background-color: #f0f0f0;
+}
+.file-preview {
+  text-align: center;
+}
+.uploaded-image-preview {
+  max-width: 100%;
+  height: auto;
+}
+.file-placeholder {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: inline-block;
+}
+.file-upload-container.file-selected {
+  border-color: orange;
+}
+.file-name-selected {
+  color: orange;
+}

@@ -1,0 +1,11 @@
+{
+  "apps" : [
+    {
+      "name": "generation-api",
+      "interpreter": "/bin/bash",
+      "script": "launch.bash",
+      "out_file": "/var/log/generation-api.log",
+      "error_file": "/var/log/generation-api.err",
+    }
+  ]
+}

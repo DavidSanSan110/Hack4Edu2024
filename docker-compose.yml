@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  front:
+    build:
+      context: ./front
+    container_name: front
+    ports:
+      - "80:80"
+
+  detector:
+    build: ./generation-api
+    container_name: generation
+    ports:
+      - "5000:5000"
