@@ -50,7 +50,7 @@
 
 <script>
 import { toRaw } from "vue";
-import { useDataStore } from "@/stores/useDataStore";
+import { useDataStore } from "../stores/useDataStore";
 
 export default {
   name: "Alumnos",
