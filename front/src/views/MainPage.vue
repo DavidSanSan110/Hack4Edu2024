@@ -352,6 +352,7 @@
 
 <script>
 import { useDataStore } from "../stores/useDataStore";
+import { toRaw } from "vue";
 
 export default {
   data() {
@@ -474,14 +475,14 @@ export default {
   created() {
     this.selectedCurso = "C";
     this.store = useDataStore();
-    let storeLecciones = this.store.getLecciones;
+    let storeLecciones = toRaw(this.store.getLecciones);
     if (storeLecciones) {
       this.lecciones = storeLecciones;
     }
   },
   mounted() {
     this.store = useDataStore();
-    let storeLecciones = this.store.getLecciones;
+    let storeLecciones = toRaw(this.store.getLecciones);
     if (storeLecciones) {
       this.lecciones = storeLecciones;
     }

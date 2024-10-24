@@ -21,10 +21,7 @@ jobs:
         run: docker compose -f "docker-compose.yml" down
         continue-on-error: true
       - name: Remove Docker Containers
-        run: docker container prune -f
-        continue-on-error: true
-      - name: Remove Docker Images
-        run: docker image prune -f
+        run: docker system prune --all
         continue-on-error: true
 
   docker_compose:
