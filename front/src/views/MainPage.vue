@@ -472,15 +472,8 @@ export default {
       return this.store.isLeccionModalOpen;
     },
   },
-  created() {
-    this.selectedCurso = "C";
-    this.store = useDataStore();
-    let storeLecciones = toRaw(this.store.getLecciones);
-    if (storeLecciones) {
-      this.lecciones = storeLecciones;
-    }
-  },
   mounted() {
+    this.selectedCurso = "C";
     this.store = useDataStore();
     let storeLecciones = toRaw(this.store.getLecciones);
     if (storeLecciones) {
