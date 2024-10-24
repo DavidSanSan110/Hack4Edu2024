@@ -89,7 +89,7 @@ class OpenAIGpt:
         completion = self.client.beta.chat.completions.parse(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "Genera un curso sobre el tema dado para niños (6 elementos), tienes que devolver: en 'normal' un array con 6 textos de 3-4 lineas sobre el tema SIN EMOJIS. En 'emoji' un array que contenga los mismos textos pero AÑADIENDO un emoji delante de las palabras que tengan un emoticono conocido (por ejemplo en vez de agua pones 💧)"},
+                {"role": "system", "content": "Genera un curso sobre el tema dado para niños (6 elementos), tienes que devolver: en 'normal' un array con 6 textos de 3-4 lineas sobre el tema SIN EMOJIS. En 'emoji' un array que contenga los mismos textos pero SUSTITUYENDO algunas palabras por emojis que signifiquen lo mismo (QUITANDO las palabras que ya sean emojis)"},
                 {"role": "user", "content": prompt},
             ],
             response_format=Course

@@ -8,24 +8,38 @@
     </v-row>
     <v-row justify="center" align="center" class="mb-16">
       <v-col cols="12" md="6">
-        <v-card class="mx-auto pa-4 mr-16 activity-card kid-friendly" max-width="600">
+        <v-card
+          class="mx-auto pa-4 mr-16 activity-card kid-friendly"
+          max-width="600"
+        >
           <div class="activity-header">📚 Actividades</div>
           <v-list class="kid-friendly-list" variant="text">
-            <v-list-item @click="onListItemClick('cuento')" clickable rounded="l">
+            <v-list-item
+              @click="onListItemClick('cuento')"
+              clickable
+              rounded="l"
+            >
               <v-list-item-title>Cuento Curioso 📚</v-list-item-title>
             </v-list-item>
-            <v-list-item @click="onListItemClick('juguetes')" clickable rounded="l">
+            <v-list-item
+              @click="onListItemClick('juguetes')"
+              clickable
+              rounded="l"
+            >
               <v-list-item-title>Recuerda Juguetes 🎄</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-card>
       </v-col>
       <v-col cols="12" md="6">
-        <v-card class="mx-auto pa-4 ml-16 learn-card kid-friendly" max-width="600">
+        <v-card
+          class="mx-auto pa-4 ml-16 learn-card kid-friendly"
+          max-width="600"
+        >
           <div class="learn-header">🌊 Aprender</div>
           <v-list class="kid-friendly-list" variant="text">
             <v-list-item @click="goToAmbos" clickable rounded="l">
-              <v-list-item-title>Ciclo del Agua ☔</v-list-item-title>
+              <v-list-item-title>{{ title }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-card>
@@ -35,21 +49,41 @@
 </template>
 
 <script>
+import { toRaw } from "vue";
+import { useDataStore } from "@/stores/dataStore";
+
 export default {
-  name: 'Alumnos',
+  name: "Alumnos",
+  data() {
+    return {
+      title: "",
+    };
+  },
+  mounted() {
+    const dataStore = useDataStore();
+    this.title = toRaw(dataStore.getLeccion);
+    console.log("Fetched lesson title:", this.title);
+  },
+  computed: {
+    title() {
+      const dataStore = useDataStore();
+      return dataStore.getLeccion;
+    },
+  },
   methods: {
     onListItemClick(activity) {
       console.log(`Elegiste la actividad: ${activity}`);
     },
     goToAmbos() {
-      this.$router.push( '/ambos?tipo=iconos' );
-    }
-  }
-}
+      this.$router.push("/ambos?tipo=resaltado");
+    },
+  },
+};
 </script>
 
 <style scoped>
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -69,33 +103,33 @@ html, body {
 /* Text Styles */
 .welcome-text {
   color: #333333;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: bold;
   font-size: 66px;
   margin-top: 30px;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 .encouragement-text {
-  color: #5c5c5c; 
-  font-family: 'Montserrat', sans-serif;
+  color: #5c5c5c;
+  font-family: "Montserrat", sans-serif;
   font-size: 24px;
-  margin-top: 0; 
+  margin-top: 0;
   font-weight: bold;
 }
 
 /* Card Styles */
 .activity-card {
-  background-color: #ffeb3b;
-  border: 2px solid #ff9800; 
+  background-color: #40e0d0;
+  border: 2px solid #30b0a3;
   border-radius: 24px;
   text-align: center;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .learn-card {
-  background-color: #ff8c00; 
-  border: 2px solid #ff6f00; 
+  background-color: #ffa500;
+  border: 2px solid #ff6f00;
   border-radius: 24px;
   text-align: center;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -108,7 +142,7 @@ html, body {
 }
 
 .kid-friendly:hover {
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
 .kid-friendly-list {
@@ -117,26 +151,26 @@ html, body {
 }
 
 .activity-header {
-  color: #000000; 
+  color: #000000;
   font-weight: bold;
-  font-size: 32px; 
+  font-size: 32px;
   text-align: center;
-  margin-bottom: 16px; 
+  margin-bottom: 16px;
 }
 
 .learn-header {
   color: #000000;
   font-weight: bold;
-  font-size: 32px; 
+  font-size: 32px;
   text-align: center;
   margin-bottom: 16px;
 }
 
 .v-list-item {
-  background-color: transparent; 
+  background-color: transparent;
   border-radius: 12px;
   padding: 10px;
-  border: none; 
+  border: none;
 }
 
 /* Remove hover effect */
@@ -145,8 +179,8 @@ html, body {
 }
 
 .v-list-item-title {
-  color: #333333; 
-  font-family: 'Montserrat', sans-serif;
+  color: #333333;
+  font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-weight: bold;
 }
@@ -156,7 +190,7 @@ html, body {
 }
 
 .highlight-text {
-  color: #333333; 
+  color: #333333;
 }
 
 .card-image {
@@ -165,7 +199,7 @@ html, body {
 }
 
 .v-btn {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: #ff9d00;
   color: white;
   font-weight: bold;
@@ -180,5 +214,4 @@ html, body {
 .v-list-item:hover {
   background-color: transparent;
 }
-
 </style>
