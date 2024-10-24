@@ -540,8 +540,10 @@ export default {
       this.lecciones.map((leccion) => {
         leccion.titulo = this.tema;
       });
+      console.log(this.lecciones);
       this.store.setLecciones(this.lecciones);
       this.store.setLeccion(this.tema);
+      console.log(this.store.getLecciones);
 
       console.log(
         `Generar lección para el tema: ${this.tema} en el curso ${this.selectedCurso}`
