@@ -4,12 +4,14 @@ services:
   front:
     build:
       context: ./front
-    container_name: front
+    container_name: frontfinal
     ports:
       - "80:80"
 
-  detector:
+  generator:
     build: ./generation-api
-    container_name: generation
+    container_name: generatorfinal
+    volumes:
+      - ./home/ubuntu/env/generation-api/.env:/app/generation-api/.env
     ports:
       - "5000:5000"

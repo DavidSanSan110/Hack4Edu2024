@@ -1,0 +1,5 @@
+/*/node_modules/
+/*/.venv/
+/*/build/
+/*/generation_api.egg-info/
+/*/.env/

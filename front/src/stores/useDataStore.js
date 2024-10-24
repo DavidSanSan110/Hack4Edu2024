@@ -5,6 +5,8 @@ export const useDataStore = defineStore('data', {
     courses: {},
     empathy: [],
     isLeccionModalOpen: false,
+    lecciones: [],
+    leccion: "",
   }),
   actions: {
     setCourses(courses) {
@@ -18,6 +20,12 @@ export const useDataStore = defineStore('data', {
     },
     setEmpathy(empathy) {
       this.empathy = empathy;
+    },
+    setLecciones(lecciones) {
+      this.lecciones = lecciones
+    },
+    setLeccion(leccion) {
+      this.leccion = leccion;
     }
   },
   getters: {
@@ -29,6 +37,12 @@ export const useDataStore = defineStore('data', {
     },
     getEmpathy(state) {
       return state.empathy;
+    },
+    getLecciones(state) {
+      return state.lecciones;
+    },
+    getLeccion(state) {
+      return state.leccion;
     }
   },
   persist: true,

@@ -10,7 +10,6 @@ import TextToSpeech from "./components/TextToSpeech.vue";
 import ImageToSpeech from "./components/ImageToSpeech.vue";
 import Diagnosis from "./components/Diagnosis.vue";
 import SpeechToText from "./components/SpeechToText.vue";
-import Courses from "./components/Courses/CoursesView.vue";
 
 export default {
   name: "App",
@@ -20,7 +19,6 @@ export default {
     ImageToSpeech,
     Diagnosis,
     SpeechToText,
-    Courses,
   },
 };
 </script>

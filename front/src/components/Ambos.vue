@@ -8,7 +8,7 @@
           </v-btn>
 
           <h1 class="text-center" style="margin-bottom: 30px; font-weight: 600">
-            El Ciclo del Agua
+            {{ title }}
           </h1>
 
           <p v-html="currentText"></p>
@@ -57,6 +57,7 @@ export default {
   name: "Ambos",
   data() {
     return {
+      title: "",
       texts: [],
       currentIndex: 0, 
     };
@@ -88,9 +89,12 @@ export default {
   },
   mounted() {
     const dataStore = useDataStore();
+    console.log(toRaw(dataStore.getCourses));
+    this.title = dataStore.getLeccion;
+    console.log(this.title);
     this.tipo = this.$route.query.tipo;
     if (this.tipo == "iconos") {
-      this.texts = toRaw(dataStore.getCourses)["iconos"];
+      this.texts = toRaw(dataStore.getCourses)["emoji"];
     } else if (this.tipo == "normal") {
       this.texts = toRaw(dataStore.getCourses)["normal"];
     } else if (this.tipo == "resaltado") {

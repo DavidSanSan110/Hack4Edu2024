@@ -447,23 +447,14 @@ export default {
       lecciones: [
         {
           id: 2,
-          titulo: "El ciclo del agua",
-          descripcion:
-            "Descubre los planetas que giran alrededor de nuestra estrella",
           color: "blue",
         },
         {
           id: 3,
-          titulo: "El ciclo del agua",
-          descripcion:
-            "Conoce los elementos químicos y sus propiedades en la tabla periódica",
           color: "green",
         },
         {
           id: 1,
-          titulo: "El ciclo del agua",
-          descripcion:
-            "Aprende cómo el agua se mueve por la Tierra en un ciclo constante",
           color: "purple",
         }
       ],
@@ -483,6 +474,17 @@ export default {
   created() {
     this.selectedCurso = "C";
     this.store = useDataStore();
+    let storeLecciones = this.store.getLecciones;
+    if (storeLecciones) {
+      this.lecciones = storeLecciones;
+    }
+  },
+  mounted() {
+    this.store = useDataStore();
+    let storeLecciones = this.store.getLecciones;
+    if (storeLecciones) {
+      this.lecciones = storeLecciones;
+    }
   },
   methods: {
     onLeccionClick(leccion) {
@@ -500,19 +502,19 @@ export default {
     },
     onActividadClick(actividad) {
       this.isGeneratingEmpatia = true;
-        fetch("http://api:5000/generation-api/v1/generation/absurdity", {
+        fetch("http://143.47.45.118:5000/generation-api/v1/generation/absurdity_final", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            problem: this.actividadSeleccionada.descripcion,
+            message: this.actividadSeleccionada.descripcion,
           }),
         })
           .then((response) => response.json())
           .then((data) => {
             console.log("Success:", data);
-            this.datosEmpatia = data;
+            this.datosEmpatia = data["message"];
             this.actividadSeleccionada = {
               titulo: `Actividad de Inclusion Generada`,
               descripcion: `Este es un juego de puntuación en el que los alumnos tratarán de conseguir la máxima pontuación contestando correctamente las preguntas. Sin embargo, habrá varias absurdas que no tendrán solución, y servirá como introducirán a la discalculia. 
@@ -535,24 +537,28 @@ export default {
     generarLeccion() {
       this.isGenerating = true;
 
+      this.lecciones.map((leccion) => {
+        leccion.titulo = this.tema;
+      });
+      this.store.setLecciones(this.lecciones);
+      this.store.setLeccion(this.tema);
+
       console.log(
         `Generar lección para el tema: ${this.tema} en el curso ${this.selectedCurso}`
       );
-        fetch("http://api:5000/generation-api/v1/generation/course", {
+        fetch("http://143.47.45.118:5000/generation-api/v1/generation/course", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            tema: this.tema,
-            curso: this.selectedCurso,
-            archivo: this.nombreArchivo,
+            message: this.tema,
           }),
         })
           .then((response) => response.json())
           .then((data) => {
             console.log("Success:", data);
-            useDataStore().setCourses(data);
+            useDataStore().setCourses(data["message"]);
             this.dialogCrearLeccion = false;
             this.isGenerating = false;
             this.store.openLeccionModal();
