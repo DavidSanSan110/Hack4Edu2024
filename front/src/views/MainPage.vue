@@ -354,8 +354,6 @@
 import { useDataStore } from "../stores/useDataStore";
 import { toRaw } from "vue";
 
-const store = useDataStore();
-
 export default {
   data() {
     return {
@@ -474,10 +472,15 @@ export default {
       return this.store.isLeccionModalOpen;
     },
   },
+  created() {
+    this.store = useDataStore();
+  },
   mounted() {
     this.selectedCurso = "C";
-    let storeLecciones = toRaw(store.getLecciones);
-    if (storeLecciones) {
+    let storeLecciones = toRaw(this.store.getLecciones);
+    console.log(storeLecciones);
+    if (storeLecciones && storeLecciones.length > 0) {
+      console.log("Lecciones encontradas en el store");
       this.lecciones = storeLecciones;
     }
   },
@@ -536,8 +539,8 @@ export default {
         leccion.titulo = this.tema;
       });
       console.log(this.lecciones);
-      store.setLecciones(this.lecciones);
-      store.setLeccion(this.tema);
+      this.store.setLecciones(this.lecciones);
+      this.store.setLeccion(this.tema);
       console.log(this.store.getLecciones);
 
       console.log(
@@ -555,7 +558,7 @@ export default {
           .then((response) => response.json())
           .then((data) => {
             console.log("Success:", data);
-            store.setCourses(data["message"]);
+            this.store.setCourses(data["message"]);
             this.dialogCrearLeccion = false;
             this.isGenerating = false;
             store.openLeccionModal();
@@ -564,12 +567,12 @@ export default {
             console.error("Error:", error);
             this.dialogCrearLeccion = false;
             this.isGenerating = false;
-            store.openLeccionModal();
+            this.store.openLeccionModal();
           });
     },
     accederEmpatia() {
       //useDataStore().setEmpathy(this.datosEmpatia);
-      store.setEmpathy(this.datosEmpatia);
+      this.store.setEmpathy(this.datosEmpatia);
       this.$router.push("empatia");
     },
     iraEmpatia() {
