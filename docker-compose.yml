@@ -12,6 +12,6 @@ services:
     build: ./generation-api
     container_name: generatorfinal
     volumes:
-      - ./home/ubuntu/env/generation-api/.env:/app/generation-api/.env
+      - /home/ubuntu/env/generation-api/.env:/app/generation-api/.env
     ports:
       - "5000:5000"
