@@ -4,7 +4,7 @@ RUN mkdir /app
 
 WORKDIR /app
 
-ADD /generation-api /app/generation-api
+ADD . /app/generation-api
 
 RUN pip install -r ./generation-api/requirements.txt
 
